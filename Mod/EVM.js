@@ -33,6 +33,14 @@ G.AddData({
 			partOf:'food',
 			category:'food',
 		});
+		new G.res({
+			name:'spinach',
+			desc:'after you discovered farming you can plant edible spinach',
+			turnToByContext:{'eat':{'health':0.03,'happiness':0.05},'decay'{'spoiled food':0.24}},
+			icon:[0,2,'spicySheet'],
+			partOf:'food',
+			category:'food',
+		})
 		new G.Res({
 			name:'hot sauce',
 			desc:'Made from [herb]s and the [hot pepper,Spiciest peppers], this [hot sauce] stays fresh for a while and will leave anyone panting and asking for more.',
@@ -56,10 +64,11 @@ G.AddData({
 			//adding a new mode to artisans so they can make hot sauce from hot peppers
 		G.getDict('artisan').modes['hot sauce 1']={name:'Make hot sauce from hot peppers',desc:'Turn 3 [hot pepper]s and 3 [herb]s into 1 [hot sauce].',req:{'hot sauce preparing':true},use:{'knapped tools':1}};
 		G.getDict('artisan').modes['hot sauce 2']={name:'Make extra hot sauce', desc: 'turns 1 [cursed pepper], 3 [herb]s and [water] into hot sauce.',req:{'hot sauce preparing':true},use:{'knapped tools':1}};
-		G.getDict('farmer').modes['plant spinach']={name:'plant spinach', desc: 'turns spoiled food, seeds and water into strong to the finish spinach',req:{'farming':true},use:{'knapped tools':1},
-			//adding a new effect to artisans that handles the actual hot sauce preparing and is only active when the unit has the mode "hot sauce"
-		G.getDict('artisan').effects.push,({type:'convert',from:{'hot pepper':3,'herb':3},into:{'hot sauce':1},every:3,mode:'hot sauce 1'}),
+		G.getDict('farmer').modes['plant spinach']={name:'plant spinach', desc: 'turns spoiled food, fruit seeds and water into strong to the finish spinach',req:{'farming':true},use:{'knapped tools':1},
+		//adding a new effect to artisans that handles the actual hot sauce preparing and is only active when the unit has the mode "hot sauce"
+		G.getDict('artisan').effects.push,({type:'convert',from:{'hot pepper':3,'herb':3}, into:{'hot sauce':1},every:3,mode:'hot sauce 1'}),
 		G.getDict('artisan').effects.push,({type:'convert',from:{'cursed pepper':1,'herb':3,'water':1}, into:{'hot sauce':1},every:3,mode:'hot sauce 2'}),
+		G.getDict('farmer').effects.push,({type:'convert', from:{'water':1, 'fruit':1, 'spoiled food':3}, into:{'spinach':10}})
 		//Then we add a new technology which is required by the artisans to gain access to the "hot sauce" mode :
 		new G.Tech({
 			name:'hot sauce preparing',
