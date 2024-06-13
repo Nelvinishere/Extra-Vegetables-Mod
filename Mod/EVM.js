@@ -68,7 +68,7 @@ G.AddData({
 		//adding a new effect to artisans that handles the actual hot sauce preparing and is only active when the unit has the mode "hot sauce"
 		G.getDict('artisan').effects.push,({type:'convert',from:{'hot pepper':3,'herb':3}, into:{'hot sauce':1},every:3,mode:'hot sauce 1'}),
 		G.getDict('artisan').effects.push,({type:'convert',from:{'cursed pepper':1,'herb':3,'water':1}, into:{'hot sauce':1},every:3,mode:'hot sauce 2'}),
-		G.getDict('farmer').effects.push,({type:'convert', from:{'water':1, 'fruit':1, 'spoiled food':3}, into:{'spinach':10}})
+		G.getDict('farmer').effects.push,({type:'convert', from:{'water':1, 'fruit':1, 'spoiled food':3}, into:{'spinach':10},every:21,mode:'plant spinach'})
 		//Then we add a new technology which is required by the artisans to gain access to the "hot sauce" mode :
 		new G.Tech({
 			name:'hot sauce preparing',
@@ -98,6 +98,6 @@ G.AddData({
 		});
 		
 		//There are many other ways of adding and changing content; refer to /data.js, the default dataset, if you want to see how everything is done in the base game. Good luck!
-	}
-	});
+	} 
+    });
 	
