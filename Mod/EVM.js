@@ -35,9 +35,17 @@ G.AddData({
 		});
 		new G.res({
 			name:'spinach',
-			desc:'after you discovered farming you can plant edible spinach',
+			desc:'after you discovered farming you can plant edible spinach, it is healthy for everyone',
 			turnToByContext:{'eat':{'health':0.03,'happiness':0.05},'decay':{'spoiled food':0.24}},
 			icon:[0,2,'spicySheet'],
+			partOf:'food',
+			category:'food',
+		});
+		new G.res({
+			name:'Brussel Sprout',
+            desc:'have you heard about the brussel sprout, it is very appetizing and plantable',
+			turnToByContext:{'eat':{'health':0.02,'happiness':0.00},'decay':{'spoiled food':0.05}},
+			icon:[0,3,'spicySheet'],
 			partOf:'food',
 			category:'food',
 		})
